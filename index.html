@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux VM Browser - Run Linux in Your Browser</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐧 Linux VM Browser</h1>
+            <p class="subtitle">Run a full Linux environment directly in your browser</p>
+        </header>
+
+        <nav class="navbar">
+            <button class="nav-btn active" data-tab="vm">VM Console</button>
+            <button class="nav-btn" data-tab="info">About</button>
+            <button class="nav-btn" data-tab="settings">Settings</button>
+        </nav>
+
+        <main class="main-content">
+            <!-- VM Console Tab -->
+            <section id="vm" class="tab-content active">
+                <div class="vm-container">
+                    <div class="vm-controls">
+                        <button id="startBtn" class="btn btn-primary">Start VM</button>
+                        <button id="stopBtn" class="btn btn-danger" disabled>Stop VM</button>
+                        <button id="fullscreenBtn" class="btn btn-secondary">Fullscreen</button>
+                        <div class="status-indicator">
+                            <span id="status" class="status-text">Ready</span>
+                            <div class="status-dot" id="statusDot"></div>
+                        </div>
+                    </div>
+                    <div id="screen" class="vm-screen"></div>
+                    <div class="vm-info">
+                        <p>💡 Tip: Click inside the VM to focus. Press Ctrl+Alt to release mouse.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Tab -->
+            <section id="info" class="tab-content">
+                <div class="info-box">
+                    <h2>About This App</h2>
+                    <p>This is a browser-based Linux virtual machine emulator powered by <strong>v86</strong>, a JavaScript x86 PC emulator.</p>
+                    
+                    <h3>Features</h3>
+                    <ul>
+                        <li>✅ Full Linux OS running in your browser</li>
+                        <li>✅ No installation or downloads required</li>
+                        <li>✅ Works offline (after initial load)</li>
+                        <li>✅ Multiple Linux distributions supported</li>
+                        <li>✅ File system persistence</li>
+                        <li>✅ Network access (with limitations)</li>
+                    </ul>
+
+                    <h3>How It Works</h3>
+                    <p>This app uses:</p>
+                    <ul>
+                        <li><strong>v86:</strong> JavaScript PC emulator</li>
+                        <li><strong>WebAssembly:</strong> For performance</li>
+                        <li><strong>Web Storage:</strong> For persistence</li>
+                    </ul>
+
+                    <h3>System Requirements</h3>
+                    <ul>
+                        <li>Modern browser (Chrome, Firefox, Safari, Edge)</li>
+                        <li>At least 2GB RAM recommended</li>
+                        <li>JavaScript enabled</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Settings Tab -->
+            <section id="settings" class="tab-content">
+                <div class="settings-box">
+                    <h2>Settings</h2>
+                    
+                    <div class="setting-group">
+                        <label for="cpuCount">CPU Cores:</label>
+                        <select id="cpuCount">
+                            <option value="1">1 Core</option>
+                            <option value="2" selected>2 Cores</option>
+                            <option value="4">4 Cores</option>
+                            <option value="8">8 Cores</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="memorySize">Memory (RAM):</label>
+                        <select id="memorySize">
+                            <option value="256">256 MB</option>
+                            <option value="512">512 MB</option>
+                            <option value="1024" selected>1 GB</option>
+                            <option value="2048">2 GB</option>
+                            <option value="4096">4 GB</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="distro">Linux Distribution:</label>
+                        <select id="distro">
+                            <option value="alpine">Alpine Linux (Lightweight)</option>
+                            <option value="debian" selected>Debian</option>
+                        </select>
+                    </div>
+
+                    <div class="setting-group">
+                        <label for="theme">Theme:</label>
+                        <select id="theme">
+                            <option value="dark" selected>Dark</option>
+                            <option value="light">Light</option>
+                        </select>
+                    </div>
+
+                    <button id="saveSettings" class="btn btn-primary">Save Settings</button>
+                    <button id="clearData" class="btn btn-danger">Clear All Data</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://copy.sh/v86/build/v86.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
